@@ -59,6 +59,7 @@ else:
 data = torch.Tensor(dataset.x).to(device)
 label = y
 
+%这一注释掉的部分可以用来生成基于随机游走构造的邻接矩阵，即，我将这些矩阵存储为 数据集名称_dw的格式
 """
 adj,walker = load_graph(opt.args.k, opt.args.graph_k_save_path, opt.args.graph_save_path, opt.args.data_path,opt.args.walk_length,opt.args.num_walk)
 adj = adj.to_dense()
@@ -86,7 +87,7 @@ dot_kernel = dot_prod / dot_sum   #归一化？？？ kernel T
 
 dot_kernel = (torch.from_numpy(dot_kernel)).to(torch.float32)"""
 
-
+%就是上面注释掉的部分生成的，可以自己生成
 dw = torch.load("{}_dw".format(opt.args.name))
 ###  model definition
 model = DFCN(ae_n_enc_1=opt.args.ae_n_enc_1, ae_n_enc_2=opt.args.ae_n_enc_2, ae_n_enc_3=opt.args.ae_n_enc_3,
